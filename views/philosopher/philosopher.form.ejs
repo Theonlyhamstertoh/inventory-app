@@ -1,0 +1,65 @@
+<!DOCTYPE html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <title>Create Category FOrm</title>
+</head>
+<body class="container">
+  <h1 style="margin: 20px;" class="title is-2">Create a New Philosopher</h1>
+  <form method="POST" action="<%= url %>" class="field" enctype="multipart/form-data">
+    <label for="first_name" class="label">First Name</label>
+    <div class="control">
+        <input class="input" type="text" id="first_name" name="first_name" placeholder="Weibo" required>
+    </div>
+    <label for="last_name" class="label">last Name</label>
+    <div class="control">
+        <input class="input" type="text" id="last_name" name="last_name" placeholder="Zhang" required>
+    </div>
+    <label for="bio" class="label">Biography</label>
+    <div class="control">
+      <textarea id="bio" class="textarea" placeholder="biography..." name="bio" required></textarea>
+    </div>
+    <label for="first_quote" class="label">Famous Quote #1</label>
+    <div class="control">
+      <input type="text" class="input"  placeholder="famous quote..." id="first_quote" name="first_quote" required>
+    </div>
+    <label for="second_quote" class="label">Famous Quote #2</label>
+    <div class="control">
+      <input type="text" class="input"  placeholder="famous quote..." id="second_quote" name="second_quote" required>
+    </div>
+    <label for="third_quote" class="label">Famous Quote #3</label>
+    <div class="control">
+      <input type="text" class="input"  placeholder="famous quote..." id="third_quote" name="third_quote" required>
+    </div>
+
+    
+    <div class="file is-primary has-name" style="margin-top: 20px;">
+      <label class="file-label">
+        <input class="file-input" type="file" name="image" accept="image/png, image/gif, image/jpeg" required>
+        <span class="file-cta">
+          <span class="file-label">
+            Upload Image
+          </span>
+        </span>
+        <span class="file-name"> File name will be shown here
+        </span>
+      </label>
+    </div>
+    <div class="control">
+      <button style="margin-top: 20px;" class="button is-primary is-outlined" type="submit">Submit</button>
+    </div>
+  </form>
+
+  <script>
+      const file_label = document.querySelector('.file-name')
+      const file_input = document.querySelector(".file-input")
+
+      file_input.addEventListener('change', function (e) {
+        file_label.textContent =  file_input.files[0].name
+      })
+  </script>
+</body>
+</html>

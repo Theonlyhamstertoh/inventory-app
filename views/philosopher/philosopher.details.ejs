@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title><%= philosopher.name %></title>
+</head>
+<body class="wrapper">
+  <div class="container">
+    <a href="/category/<%= philosopher.category.name  %> " class="link">Go back</a>
+    <h3 class="title"><%= philosopher.name %></h3>
+    <img class="marginBottom image is-fullwidth"  src="data:<%= philosopher.imageURL.mimetype %>;base64,<%= philosopher.imageURL.image %>" > 
+    <p class="marginBottom" ><%= philosopher.bio %></p>
+  </div>
+
+  <div>
+    <a href=<%= philosopher.url + "/update"  %> >
+      <button class="button is-primary is-small ">update philosopher</button> 
+    </a>
+    <button data-url="<%= philosopher.url + "/delete"  %>" id="delete" class="button is-danger is-small">delete philosopher</button> 
+  </div>
+  <script>
+    const deleteButton = document.querySelector('#delete')
+    const endpoint = deleteButton.dataset.url
+    deleteButton.onclick = () => {
+      fetch(endpoint, {
+        method: "DELETE"
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch((err) => console.log(err))
+    }
+  </script>
+</body>
+</html>

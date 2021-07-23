@@ -1,0 +1,101 @@
+a {
+  color: #00d1b2;
+}
+
+form {
+  /* width: 800px; */
+  margin: 20px;
+}
+
+body {
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  margin: 20px auto;
+  line-height: 1.5;
+}
+p {
+  white-space: pre-wrap;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: centers;
+  /* padding: 40px 40px; */
+}
+
+.indexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  justify-content: center;
+}
+input[type="text"] {
+  margin-bottom: 10px;
+}
+
+.marginBottom {
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.marginALot {
+  margin: 30px;
+}
+
+.theCard {
+  width: 330px;
+}
+
+.flexCenter {
+  display: flex;
+  gap: 10px;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+
+small {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.image-fit {
+  object-fit: cover;
+}
+
+.absolute-right {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+@media (max-width: 400px) {
+  body {
+    margin: 15px;
+    margin-bottom: 100px;
+  }
+
+  .indexContainer {
+    gap: 10px;
+  }
+
+  .flexCenter {
+    justify-content: space-between;
+  }
+  .flexCenter > p {
+    font-size: 14px;
+  }
+
+  small {
+    margin: 0px;
+  }
+}

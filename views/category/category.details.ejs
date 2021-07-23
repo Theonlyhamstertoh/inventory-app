@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title><%= category.name %></title>
+</head>
+<body class="wrapper">
+  <div class="container">
+    <a href="/category" class="link">Go back</a>
+    <h3 class="title"><%= category.name %></h3>
+    <img class="marginBottom image-fit" src="data:<%= category.imageURL.mimetype %>;base64,<%= category.imageURL.image %>" >
+    <p class="marginBottom" ><%= category.description %></p>
+    <h3 class="title">Philosophers</h3>
+    <div>
+      <% if(philosophers.length > 0) { %>
+        <% philosophers.forEach(philosopher => { %>
+          <div class="card theCard">
+            <div class="card-image">
+        
+              <figure class="image is-4by3">
+                <img class="marginBottom image-fit" src="data:<%= philosopher.imageURL.mimetype %>;base64,<%= philosopher.imageURL.image %>" > 
+              </figure>
+            </div>
+            <div class="card-header-title is-centered">
+              <a href="<%= philosopher.url %>?category=<%= category.slug  %>  " >
+                <div class="flexCenter">
+                  <p><%= philosopher.name %></p>    
+                </div>
+              </a>
+            </div>
+          </div>
+        <% }) %>  
+      <% } %>   
+    </div>
+    <div>
+      <a href=<%="/philosopher/create?slug=" + category.slug %> >
+        <button class="button is-primary is-small ">Create Philosopher</button> 
+      </a>
+      <a href=<%= category.url + "/update"  %>>
+        <button class="button is-primary is-small ">update category</button> 
+      </a>
+        <button data-url="<%= category.url + "/delete"  %>" id="delete" class="button is-danger is-small">delete category</button> 
+    </div>
+  </div>
+
+  <script>
+    const deleteButton = document.querySelector('#delete')
+    const endpoint = deleteButton.dataset.url
+    console.log(endpoint)
+    deleteButton.onclick = () => {
+      fetch(endpoint, {
+        method: "DELETE"
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch((err) => console.log(err))
+    }
+  </script>
+</body>
+</html>

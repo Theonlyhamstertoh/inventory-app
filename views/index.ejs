@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Categories</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body >
+    <h1 class="title is-centered" style="text-align: center;   color: #00d1b2;">Philosophical Categories</h1>
+    <main class="indexContainer">
+      <% if (categories.length > 0) { %>
+       <% categories.forEach(category => { %>
+        
+  
+        <div class="card theCard">
+          <div class="card-image">
+      
+            <figure class="image is-4by3">
+              <img class="marginBottom image-fit" src="data:<%= category.imageURL.mimetype %>;base64,<%= category.imageURL.image %>" >
+            </figure>
+          </div>
+          <div class="card-header-title is-centered">
+            <a href=<%= category.url %> >
+              <div class="flexCenter">
+                <p><%= category.name %></p>
+                <small><%= category.timeline %></small>
+  
+              </div>
+            </a>
+          </div>
+        </div>
+      
+       <% }) %>
+      <% } %>
+      </main>
+
+    <a href="category/create">
+      <button class="button is-primary is-small absolute-right">New Category</button> 
+    </a>
+  
+
+  
+  </body>
+</html>
