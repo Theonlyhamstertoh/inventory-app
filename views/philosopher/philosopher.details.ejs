@@ -12,14 +12,33 @@
     <a href="/category/<%= philosopher.category.name  %> " class="link">Go back</a>
     <h3 class="title"><%= philosopher.name %></h3>
     <img class="marginBottom image is-fullwidth"  src="data:<%= philosopher.imageURL.mimetype %>;base64,<%= philosopher.imageURL.image %>" > 
-    <p class="marginBottom" ><%= philosopher.bio %></p>
+
+    <article class="message marginBottom">
+      <div class="message-header">
+        <p>Description</p>
+      </div>
+      <div class="message-body">
+        <p><%= philosopher.bio %></p>
+      </div>
+    </article>
+ 
+    <h1 class="title">Quotes</h1>
+    <% philosopher.quotes.forEach(quote => { %>
+      <div class="message marginBottom is-link">
+        <div class="message-body">
+          <p><%= quote %></p>
+        </div>
+      </div>
+     
+    <% }) %> 
+
   </div>
 
   <div>
     <a href=<%= philosopher.url + "/update"  %> >
       <button class="button is-primary is-small ">update philosopher</button> 
     </a>
-    <button data-url="<%= philosopher.url + "/delete"  %>" id="delete" class="button is-danger is-small">delete philosopher</button> 
+    <button data-url="<%= philosopher.url + "/delete"  %>" id="delete" disabled class="button is-danger is-small">delete philosopher</button> 
   </div>
   <script>
     const deleteButton = document.querySelector('#delete')

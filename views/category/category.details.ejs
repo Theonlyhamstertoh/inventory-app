@@ -12,9 +12,17 @@
     <a href="/category" class="link">Go back</a>
     <h3 class="title"><%= category.name %></h3>
     <img class="marginBottom image-fit" src="data:<%= category.imageURL.mimetype %>;base64,<%= category.imageURL.image %>" >
-    <p class="marginBottom" ><%= category.description %></p>
+    <article class="message">
+      <div class="message-header">
+        <p>Description</p>
+      </div>
+      <div class="message-body">
+        <p class="marginBottom" ><%= category.description %></p>
+      </div>
+    </article>
+
     <h3 class="title">Philosophers</h3>
-    <div>
+    <div class="flex">
       <% if(philosophers.length > 0) { %>
         <% philosophers.forEach(philosopher => { %>
           <div class="card theCard">
@@ -35,14 +43,14 @@
         <% }) %>  
       <% } %>   
     </div>
-    <div>
+    <div class="flex">
       <a href=<%="/philosopher/create?slug=" + category.slug %> >
         <button class="button is-primary is-small ">Create Philosopher</button> 
       </a>
       <a href=<%= category.url + "/update"  %>>
         <button class="button is-primary is-small ">update category</button> 
       </a>
-        <button data-url="<%= category.url + "/delete"  %>" id="delete" class="button is-danger is-small">delete category</button> 
+        <button data-url="<%= category.url + "/delete"  %>" id="delete" disabled class="button is-danger is-small">delete category</button> 
     </div>
   </div>
 
