@@ -7,8 +7,13 @@ const mongoose = require("mongoose");
 const dbURL =
   "mongodb+srv://weiboAdmin:GO_HAMSTERS@cluster0.fsb0w.mongodb.net/philosophy?retryWrites=true&w=majority";
 
+const mongoConnection = process.env.MONGODB_URL || dbURL;
 mongoose
-  .connect(dbURL, { useUnifiedTopology: true, useCreateIndex: true, useNewUrlParser: true })
+  .connect(mongoConnection, {
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useNewUrlParser: true,
+  })
   .then(() => console.log("database connected"))
   .catch(() => console.error("there was a error in connecting to database"));
 
