@@ -1,6 +1,6 @@
 const multer = require("multer");
 const { body } = require("express-validator");
-const upload = multer({ dest: "../uploads" });
+const upload = multer({ dest: "../app/files" });
 const { convertImageToBase } = require("../reusable");
 const Philosopher = require("../models/model.philosopher");
 const mongoose = require("mongoose");
